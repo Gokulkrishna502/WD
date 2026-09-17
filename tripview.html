@@ -1,45 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Trip</title>
+
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial;
+            background: #f2f2f2;
             text-align: center;
             padding: 50px;
-            background: #f4f4f4;
         }
-        .box {
+
+        .trip {
             background: white;
+            width: 500px;
+            margin: auto;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            display: inline-block;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px gray;
         }
-        #status {
-            margin-top: 20px;
-            font-weight: bold;
-            color: #333;
+
+        h1 {
+            color: #222;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
         }
     </style>
 </head>
+
 <body>
-    <div class="box">
-        <h1>My Trip</h1>
-        <p>Press <strong>Ctrl + Shift + A</strong> to trigger the shortcut.</p>
-        <div id="status">Shortcut waiting...</div>
+
+    <div class="trip">
+
+        <h1>🌍 My Trip</h1>
+
+        <p>Welcome to your trip planner!</p>
+
+        <h2>✈️ Explore Your Journey</h2>
+
+        <p>
+            Plan your destinations, discover new places,
+            and enjoy your travel experience.
+        </p>
+
+        <button onclick="location.href='explore.html'">
+            Explore
+        </button>
+
     </div>
 
-    <script>
-        document.addEventListener('keydown', function(event) {
-            if (event.ctrlKey && event.shiftKey && event.key.toLowerCase() === 'a') {
-                event.preventDefault();
-                document.getElementById('status').textContent = 'Shortcut activated!';
-                alert('Shortcut key pressed: Ctrl + Shift + A');
-            }
-        });
-    </script>
 </body>
-</html>
+</html>sss
