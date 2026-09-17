@@ -1,11 +1,45 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <h1>
-            <title>My Trip</title>
-        </h1>
-        <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Trip</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: #f4f4f4;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+        #status {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>My Trip</h1>
+        <p>Press <strong>Ctrl + Shift + A</strong> to trigger the shortcut.</p>
+        <div id="status">Shortcut waiting...</div>
+    </div>
 
-        </body>
-    </head>
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.shiftKey && event.key.toLowerCase() === 'a') {
+                event.preventDefault();
+                document.getElementById('status').textContent = 'Shortcut activated!';
+                alert('Shortcut key pressed: Ctrl + Shift + A');
+            }
+        });
+    </script>
+</body>
 </html>
