@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TripVista - Explore The World</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+
+            <h1 class="logo">TripVista</h1>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <h2>Explore The World</h2>
+
+            <p>
+                Discover beautiful places, exciting adventures
+                and unforgettable memories.
+            </p>
+
+            <button onclick="exploreTrips()">
+                Explore Trips
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Destinations -->
+    <section id="destinations" class="section">
+
+        <h2>Popular Destinations</h2>
+
+        <p class="section-description">
+            Explore some of the most beautiful destinations.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7" alt="Paris">
+
+                <div class="card-content">
+                    <h3>Paris</h3>
+                    <p>
+                        Experience the beauty, culture and history
+                        of the City of Lights.
+                    </p>
+
+                    <button>View Trip</button>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4" alt="Bali">
+
+                <div class="card-content">
+                    <h3>Bali</h3>
+                    <p>
+                        Enjoy tropical beaches, temples and
+                        amazing natural scenery.
+                    </p>
+
+                    <button>View Trip</button>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0" alt="Switzerland">
+
+                <div class="card-content">
+                    <h3>Switzerland</h3>
+                    <p>
+                        Explore mountains, lakes and beautiful
+                        European landscapes.
+                    </p>
+
+                    <button>View Trip</button>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Packages -->
+    <section id="packages" class="section packages">
+
+        <h2>Our Trip Packages</h2>
+
+        <div class="package-container">
+
+            <div class="package">
+                <h3>Weekend Trip</h3>
+
+                <h4>₹9,999</h4>
+
+                <p>2 Days / 1 Night</p>
+                <p>Hotel Included</p>
+                <p>Breakfast Included</p>
+
+                <button>Book Now</button>
+            </div>
+
+
+            <div class="package popular">
+
+                <span>POPULAR</span>
+
+                <h3>Adventure Trip</h3>
+
+                <h4>₹19,999</h4>
+
+                <p>4 Days / 3 Nights</p>
+                <p>Hotel Included</p>
+                <p>Adventure Activities</p>
+
+                <button>Book Now</button>
+
+            </div>
+
+
+            <div class="package">
+
+                <h3>Luxury Trip</h3>
+
+                <h4>₹39,999</h4>
+
+                <p>7 Days / 6 Nights</p>
+                <p>Luxury Hotel</p>
+                <p>All Meals Included</p>
+
+                <button>Book Now</button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Gallery -->
+    <section id="gallery" class="section">
+
+        <h2>Travel Gallery</h2>
+
+        <div class="gallery">
+
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Beach">
+
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b" alt="Mountain">
+
+            <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1" alt="Lake">
+
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Nature">
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+
+        <h2>Plan Your Trip</h2>
+
+        <p>
+            Ready for your next adventure? Contact us today!
+        </p>
+
+        <form>
+
+            <input type="text" placeholder="Enter your name" required>
+
+            <input type="email" placeholder="Enter your email" required>
+
+            <input type="text" placeholder="Enter destination" required>
+
+            <textarea placeholder="Tell us about your trip"></textarea>
+
+            <button type="submit">Send Request</button>
+
+        </form>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <h3>TripVista</h3>
+
+        <p>
+            Your journey begins here.
+        </p>
+
+        <p>
+            © 2026 TripVista. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
