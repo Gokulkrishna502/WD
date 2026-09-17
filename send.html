@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Trip</title>
+</head>
+
+<body>
+
+    <h1>Plan Your Trip</h1>
+
+    <input type="text" id="name" placeholder="Your Name"><br><br>
+
+    <input type="text" id="destination" placeholder="Destination"><br><br>
+
+    <input type="date" id="date"><br><br>
+
+    <textarea id="message" placeholder="Enter your trip details"></textarea><br><br>
+
+    <button onclick="sendData()">Send</button>
+
+    <p id="result"></p>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+
+        const supabaseUrl = "YOUR_SUPABASE_URL";
+        const supabaseKey = "YOUR_SUPABASE_ANON_KEY";
+
+        const supabase = window.supabase.createClient(
+            supabaseUrl,
+            supabaseKey
+        );
+
+        async function sendData() {
+
+            const name = document.getElementById("name").value;
+            const destination = document.getElementById("destination").value;
+            const date = document.getElementById("date").value;
+            const message = document.getElementById("message").value;
+
+            const { error } = await supabase
+                .from("trip_data")
+                .insert([
+                    {
+                        name: name,
+                        destination: destination,
+                        date: date,
+                        message: message
+                    }
+                ]);
+
+            if (error) {
+                document.getElementById("result").innerText =
+                    "Data not saved!";
+                console.log(error);
+            } 
+            else {
+                document.getElementById("result").innerText =
+                    "Trip details saved successfully!";
+
+                document.getElementById("name").value = "";
+                document.getElementById("destination").value = "";
+                document.getElementById("date").value = "";
+                document.getElementById("message").value = "";
+            }
+        }
+
+    </script>
+
+</body>
+</html>
