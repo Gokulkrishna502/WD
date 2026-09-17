@@ -2,72 +2,222 @@
 <html>
 <head>
     <title>My Trip</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .trip {
+            background: white;
+            width: 450px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px gray;
+        }
+
+        input, textarea {
+            width: 90%;
+            padding: 12px;
+            margin: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            padding: 12px 30px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        #result {
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>Plan Your Trip</h1>
+<div class="trip">
 
-    <input type="text" id="name" placeholder="Your Name"><br><br>
+    <h1>🌍 My Trip</h1>
 
-    <input type="text" id="destination" placeholder="Destination"><br><br>
+    <input type="text" id="name" placeholder="Your Name">
 
-    <input type="date" id="date"><br><br>
+    <input type="text" id="destination" placeholder="Destination">
 
-    <textarea id="message" placeholder="Enter your trip details"></textarea><br><br>
+    <input type="date" id="date">
+
+    <textarea id="message" placeholder="Enter your trip details"></textarea>
+
+    <br>
 
     <button onclick="sendData()">Send</button>
 
     <p id="result"></p>
 
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <script>
+<script>
 
-        const supabaseUrl = "YOUR_SUPABASE_URL";
-        const supabaseKey = "YOUR_SUPABASE_ANON_KEY";
+    /* =========================
+       SUPABASE
+       ========================= */
 
-        const supabase = window.supabase.createClient(
-            supabaseUrl,
-            supabaseKey
-        );
+    const supabaseUrl = "YOUR_SUPABASE_URL";
 
-        async function sendData() {
+    const supabaseKey = "YOUR_SUPABASE_ANON_KEY";
 
-            const name = document.getElementById("name").value;
-            const destination = document.getElementById("destination").value;
-            const date = document.getElementById("date").value;
-            const message = document.getElementById("message").value;
+    const supabaseClient = window.supabase.createClient(
+        supabaseUrl,
+        supabaseKey
+    );
 
-            const { error } = await supabase
-                .from("trip_data")
-                .insert([
-                    {
-                        name: name,
-                        destination: destination,
-                        date: date,
-                        message: message
-                    }
-                ]);
 
-            if (error) {
-                document.getElementById("result").innerText =
-                    "Data not saved!";
-                console.log(error);
-            } 
-            else {
-                document.getElementById("result").innerText =
-                    "Trip details saved successfully!";
+    /* =========================
+       EMAILJS
+       ========================= */
 
-                document.getElementById("name").value = "";
-                document.getElementById("destination").value = "";
-                document.getElementById("date").value = "";
-                document.getElementById("message").value = "";
-            }
+    emailjs.init({
+        publicKey: "YOUR_EMAILJS_PUBLIC_KEY"
+    });
+
+
+    /* =========================
+       SEND BUTTON
+       ========================= */
+
+    async function sendData() {
+
+        const name =
+            document.getElementById("name").value;
+
+        const destination =
+            document.getElementById("destination").value;
+
+        const date =
+            document.getElementById("date").value;
+
+        const message =
+            document.getElementById("message").value;
+
+
+        /* Check empty fields */
+
+        if (name === "" ||
+            destination === "" ||
+            date === "" ||
+            message === "") {
+
+            document.getElementById("result").innerText =
+                "Please fill all the fields.";
+
+            return;
         }
 
-    </script>
+
+        document.getElementById("result").innerText =
+            "Sending...";
+
+
+        /* =========================
+           SAVE TO SUPABASE
+           ========================= */
+
+        const { error } = await supabaseClient
+            .from("trip_data")
+            .insert([
+                {
+                    name: name,
+                    destination: destination,
+                    date: date,
+                    message: message
+                }
+            ]);
+
+
+        if (error) {
+
+            console.log(error);
+
+            document.getElementById("result").innerText =
+                "Database error!";
+
+            return;
+        }
+
+
+        /* =========================
+           SEND EMAIL
+           ========================= */
+
+        const templateParams = {
+
+            name: name,
+
+            destination: destination,
+
+            date: date,
+
+            message: message,
+
+            to_email: "gokulakrishna502@gmail.com"
+        };
+
+
+        try {
+
+            await emailjs.send(
+                "YOUR_SERVICE_ID",
+                "YOUR_TEMPLATE_ID",
+                templateParams
+            );
+
+
+            document.getElementById("result").innerText =
+                "✅ Trip saved and sent to your email!";
+
+
+            /* Clear form */
+
+            document.getElementById("name").value = "";
+
+            document.getElementById("destination").value = "";
+
+            document.getElementById("date").value = "";
+
+            document.getElementById("message").value = "";
+
+        }
+
+        catch (error) {
+
+            console.log(error);
+
+            document.getElementById("result").innerText =
+                "Data saved, but email could not be sent.";
+
+        }
+
+    }
+
+</script>
 
 </body>
 </html>
