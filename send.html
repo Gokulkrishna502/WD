@@ -1,73 +1,122 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 <head>
-    <title>My Trip</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+```
+<title>Send Trip Data</title>
 
-    <style>
-        body {
-            font-family: Arial;
-            background: #f2f2f2;
-            text-align: center;
-            padding: 40px;
-        }
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-        .trip {
-            background: white;
-            width: 450px;
-            margin: auto;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px gray;
-        }
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-        input, textarea {
-            width: 90%;
-            padding: 12px;
-            margin: 8px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
+<style>
+    * {
+        box-sizing: border-box;
+    }
 
-        button {
-            padding: 12px 30px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 7px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        text-align: center;
+        padding: 40px 20px;
+    }
 
-        button:hover {
-            background: #0056b3;
-        }
+    .trip {
+        background: white;
+        width: 450px;
+        max-width: 100%;
+        margin: auto;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
 
-        #result {
-            font-weight: bold;
-        }
-    </style>
+    h1 {
+        margin-bottom: 25px;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+    }
+
+    textarea {
+        height: 120px;
+        resize: vertical;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+
+    button:disabled {
+        background: #999;
+        cursor: not-allowed;
+    }
+
+    #result {
+        margin-top: 15px;
+        font-weight: bold;
+    }
+</style>
+```
+
 </head>
 
 <body>
 
+```
 <div class="trip">
 
     <h1>🌍 My Trip</h1>
 
-    <input type="text" id="name" placeholder="Your Name">
+    <input
+        type="text"
+        id="name"
+        placeholder="Your Name"
+    >
 
-    <input type="text" id="destination" placeholder="Destination">
+    <input
+        type="text"
+        id="destination"
+        placeholder="Destination"
+    >
 
-    <input type="date" id="date">
+    <input
+        type="date"
+        id="date"
+    >
 
-    <textarea id="message" placeholder="Enter your trip details"></textarea>
+    <textarea
+        id="message"
+        placeholder="Enter your trip details"
+    ></textarea>
 
-    <br>
-
-    <button onclick="sendData()">Send</button>
+    <button id="sendButton" onclick="sendData()">
+        Send
+    </button>
 
     <p id="result"></p>
 
@@ -76,9 +125,9 @@
 
 <script>
 
-    /* =========================
-       SUPABASE
-       ========================= */
+    // =====================================================
+    // SUPABASE SETTINGS
+    // =====================================================
 
     const supabaseUrl = "YOUR_SUPABASE_URL";
 
@@ -90,111 +139,160 @@
     );
 
 
-    /* =========================
-       EMAILJS
-       ========================= */
+    // =====================================================
+    // EMAILJS SETTINGS
+    // =====================================================
 
     emailjs.init({
         publicKey: "YOUR_EMAILJS_PUBLIC_KEY"
     });
 
 
-    /* =========================
-       SEND BUTTON
-       ========================= */
+    // =====================================================
+    // SEND DATA FUNCTION
+    // =====================================================
 
     async function sendData() {
 
-        const name =
-            document.getElementById("name").value;
+        // Get values from form
 
-        const destination =
-            document.getElementById("destination").value;
+        const name = document
+            .getElementById("name")
+            .value
+            .trim();
 
-        const date =
-            document.getElementById("date").value;
+        const destination = document
+            .getElementById("destination")
+            .value
+            .trim();
 
-        const message =
-            document.getElementById("message").value;
+        const date = document
+            .getElementById("date")
+            .value;
+
+        const message = document
+            .getElementById("message")
+            .value
+            .trim();
 
 
-        /* Check empty fields */
+        const result = document.getElementById("result");
 
-        if (name === "" ||
+        const button = document.getElementById("sendButton");
+
+
+        // =================================================
+        // CHECK EMPTY FIELDS
+        // =================================================
+
+        if (
+            name === "" ||
             destination === "" ||
             date === "" ||
-            message === "") {
+            message === ""
+        ) {
 
-            document.getElementById("result").innerText =
-                "Please fill all the fields.";
+            result.innerText =
+                "⚠️ Please fill all the fields.";
 
-            return;
-        }
-
-
-        document.getElementById("result").innerText =
-            "Sending...";
-
-
-        /* =========================
-           SAVE TO SUPABASE
-           ========================= */
-
-        const { error } = await supabaseClient
-            .from("trip_data")
-            .insert([
-                {
-                    name: name,
-                    destination: destination,
-                    date: date,
-                    message: message
-                }
-            ]);
-
-
-        if (error) {
-
-            console.log(error);
-
-            document.getElementById("result").innerText =
-                "Database error!";
+            result.style.color = "red";
 
             return;
         }
 
 
-        /* =========================
-           SEND EMAIL
-           ========================= */
+        // =================================================
+        // SHOW SENDING MESSAGE
+        // =================================================
 
-        const templateParams = {
+        result.innerText = "⏳ Sending...";
 
-            name: name,
+        result.style.color = "black";
 
-            destination: destination,
+        button.disabled = true;
 
-            date: date,
 
-            message: message,
-
-            to_email: "gokulakrishna502@gmail.com"
-        };
-
+        // =================================================
+        // SAVE DATA TO SUPABASE
+        // =================================================
 
         try {
 
+            const { error } = await supabaseClient
+                .from("trip_data")
+                .insert([
+                    {
+                        name: name,
+                        destination: destination,
+                        date: date,
+                        message: message
+                    }
+                ]);
+
+
+            // Check database error
+
+            if (error) {
+
+                console.error("Supabase Error:", error);
+
+                result.innerText =
+                    "❌ Database error. Data was not saved.";
+
+                result.style.color = "red";
+
+                button.disabled = false;
+
+                return;
+            }
+
+
+            // =================================================
+            // EMAILJS DATA
+            // =================================================
+
+            const templateParams = {
+
+                name: name,
+
+                destination: destination,
+
+                date: date,
+
+                message: message,
+
+                to_email: "gokulakrishna502@gmail.com"
+            };
+
+
+            // =================================================
+            // SEND EMAIL
+            // =================================================
+
             await emailjs.send(
+
                 "YOUR_SERVICE_ID",
+
                 "YOUR_TEMPLATE_ID",
+
                 templateParams
+
             );
 
 
-            document.getElementById("result").innerText =
+            // =================================================
+            // SUCCESS
+            // =================================================
+
+            result.innerText =
                 "✅ Trip saved and sent to your email!";
 
+            result.style.color = "green";
 
-            /* Clear form */
+
+            // =================================================
+            // CLEAR FORM
+            // =================================================
 
             document.getElementById("name").value = "";
 
@@ -204,20 +302,29 @@
 
             document.getElementById("message").value = "";
 
+
         }
 
         catch (error) {
 
-            console.log(error);
+            console.error("EmailJS Error:", error);
 
-            document.getElementById("result").innerText =
-                "Data saved, but email could not be sent.";
+            result.innerText =
+                "⚠️ Trip saved, but email could not be sent.";
+
+            result.style.color = "orange";
 
         }
+
+
+        // Enable button again
+
+        button.disabled = false;
 
     }
 
 </script>
+```
 
 </body>
 </html>
