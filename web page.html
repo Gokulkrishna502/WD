@@ -1,10 +1,12 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Our Fest 2026</title>
+
+    <title>Our Fest 2026</title>
 
     <style>
         * {
@@ -13,19 +15,24 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background: #080808;
             color: white;
         }
 
+        /* Welcome Section */
         .welcome {
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            padding: 25px;
 
             background:
                 linear-gradient(rgba(0, 0, 0, 0.65),
@@ -48,7 +55,7 @@
         }
 
         h1 {
-            font-size: 55px;
+            font-size: 52px;
             margin-bottom: 20px;
         }
 
@@ -56,7 +63,7 @@
             color: #f3c75b;
         }
 
-        p {
+        .welcome p {
             color: #dddddd;
             font-size: 18px;
             line-height: 1.7;
@@ -85,13 +92,127 @@
             font-size: 14px;
         }
 
+        /* About Section */
+        .about {
+            text-align: center;
+            padding: 45px 20px;
+            background: #111111;
+        }
+
+        .about h2 {
+            color: #f3c75b;
+            margin-bottom: 15px;
+        }
+
+        .about p {
+            color: #dddddd;
+            line-height: 1.7;
+        }
+
+        /* Registration Section */
+        .register-section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.85),
+                                rgba(0, 0, 0, 0.90)),
+                url("https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=2000&q=90");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .registration-form {
+            background: #171717;
+            padding: 30px;
+            border: 1px solid #c9a441;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(243, 199, 91, 0.15);
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .registration-form h2 {
+            color: #f3c75b;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .form-description {
+            text-align: center;
+            color: #cccccc;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .registration-form label {
+            display: block;
+            margin-bottom: 7px;
+            color: white;
+        }
+
+        .registration-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #555555;
+            border-radius: 5px;
+            background: #252525;
+            color: white;
+            font-size: 15px;
+        }
+
+        .registration-form input:focus {
+            outline: 1px solid #f3c75b;
+            border-color: #f3c75b;
+        }
+
+        .registration-form button {
+            width: 100%;
+            padding: 13px;
+            background: #e8bd59;
+            color: #111111;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .registration-form button:hover {
+            background: white;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #f3c75b;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Mobile Screen */
         @media (max-width: 600px) {
             h1 {
-                font-size: 38px;
+                font-size: 36px;
             }
 
-            p {
+            .welcome p {
                 font-size: 16px;
+            }
+
+            .tagline {
+                font-size: 12px;
+                letter-spacing: 2px;
             }
         }
     </style>
@@ -99,19 +220,27 @@
 
 <body>
 
-    <section class="welcome">
+    <!-- Welcome Page -->
+    <section class="welcome" id="home">
         <div class="content">
 
-            <div class="tagline">CELEBRATE • CONNECT • CREATE</div>
+            <div class="tagline">
+                CELEBRATE • CONNECT • CREATE
+            </div>
 
-            <h1>Welcome to <span>Our Fest 2026</span></h1>
+            <h1>
+                Welcome to <span>Our Fest 2026</span>
+            </h1>
 
             <p>
-                Get ready for a wonderful celebration filled with
-                fun
+                Welcome to a celebration of talent, music, and friendship.
+                Join us for an unforgettable experience filled with joy,
+                excitement, and beautiful memories!
             </p>
 
-            <a href="#about" class="button">Let's Celebrate!</a>
+            <a href="#register" class="button">
+                Let's Celebrate!
+            </a>
 
             <footer>
                 One Fest • Endless Memories ✨
@@ -120,15 +249,81 @@
         </div>
     </section>
 
-    <section id="about" style="padding: 45px 20px; text-align: center;">
-        <h2 style="color: #f3c75b; margin-bottom: 15px;">
-            The Celebration Starts Here!
-        </h2>
-        <p style="margin-bottom: 0;">
+    <!-- About Section -->
+    <section class="about">
+        <h2>The Celebration Starts Here!</h2>
+
+        <p>
             Come together, enjoy every moment, and make memories
             that last forever.
         </p>
     </section>
+
+    <!-- Registration Form -->
+    <section class="register-section" id="register">
+
+        <div class="registration-form">
+
+            <form id="festForm">
+
+                <h2>Register Now</h2>
+
+                <p class="form-description">
+                    Be a part of Our Fest 2026!
+                </p>
+
+                <label for="name">Name:</label>
+                <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+                <label for="email">Email:</label>
+                <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label for="phone">Phone:</label>
+                <input
+                    id="phone"
+                    type="tel"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                    pattern="[0-9]{10}"
+                    title="Enter a 10-digit phone number"
+                    required
+                >
+
+                <button type="submit">
+                    Register for Fest
+                </button>
+
+                <a href="#home" class="back-link">
+                    ← Back to Welcome Page
+                </a>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <script>
+        document.getElementById("festForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            alert("Thank you for your interest in Our Fest 2026! The form is working, but your details have not been saved.");
+
+            this.reset();
+        });
+    </script>
 
 </body>
 </html>
