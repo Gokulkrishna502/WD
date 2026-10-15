@@ -1,67 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Trip</title>
+    <title>Event Website</title>
 
     <style>
         body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-family: Arial;
-            background: #f2f2f2;
+            background: url("https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3")
+                        center/cover;
+        }
+
+        .box {
             text-align: center;
-            padding: 50px;
-        }
-
-        .trip {
-            background: white;
-            width: 500px;
-            margin: auto;
-            padding: 30px;
+            padding: 40px;
+            width: 60%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
             border-radius: 15px;
-            box-shadow: 0 4px 10px gray;
-        }
-
-        h1 {
-            color: #222;
-        }
-
-        p {
-            font-size: 18px;
+            color: white;
         }
 
         button {
-            padding: 12px 25px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 8px;
+            padding: 12px 20px;
+            margin: 10px;
+            border: 2px solid white;
+            border-radius: 5px;
             cursor: pointer;
         }
 
-        button:hover {
-            background: #0056b3;
+        .explore {
+            background: transparent;
+            color: rgb(63, 56, 56);
         }
     </style>
 </head>
 
 <body>
 
-    <div class="trip">
+    <div class="box">
+        <h1>Welcome to Our Event</h1>
 
-        <h1>🌍 My Trip</h1>
+        <p>Join us for an amazing experience and unforgettable moments!</p>
 
-        <p>Welcome to your trip planner!</p>
-
-        <h2>✈️ Explore Your Journey</h2>
-
-        <p>
-            Plan your destinations, discover new places,
-            and enjoy your travel experience.
-        </p>
-
-        <button onclick="location.href='explore.html'">
-            Explore
-        </button>
-
+        <button>Register Now</button>
+        <button class="explore">Explore Event</button>
     </div>
 
 </body>
