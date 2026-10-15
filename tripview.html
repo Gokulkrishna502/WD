@@ -1,41 +1,89 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Event Website</title>
 
     <style>
         body {
             margin: 0;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: Arial;
-            background: url("https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3")
-                        center/cover;
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.4),
+                                rgba(0, 0, 0, 0.6)),
+                url("https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1600&q=80")
+                center/cover no-repeat;
         }
 
         .box {
             text-align: center;
             padding: 40px;
             width: 60%;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.45);
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.6);
             border-radius: 15px;
             color: white;
         }
 
+        h1 {
+            color: #ffd700;
+            font-size: 40px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
         button {
-            padding: 12px 20px;
+            padding: 12px 22px;
             margin: 10px;
-            border: 2px solid white;
+            border: 2px solid #ffd700;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .register {
+            background: #ffd700;
+            color: #111;
+        }
+
+        .register:hover {
+            background: white;
+            border-color: white;
         }
 
         .explore {
             background: transparent;
-            color: rgb(63, 56, 56);
+            color: white;
+        }
+
+        .explore:hover {
+            background: #ffd700;
+            color: black;
+        }
+
+        @media (max-width: 600px) {
+            .box {
+                width: 85%;
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
         }
     </style>
 </head>
@@ -43,14 +91,30 @@
 <body>
 
     <div class="box">
+
         <h1>Welcome to Our Event</h1>
 
+        <p>
+            Join us for an amazing experience
+            and unforgettable moments!
+        </p>
 
-        <p>Join us for an amazing experience and unforgettable moments!</p>
+        <button class="register"
+            onclick="window.location.href='register.html'">
+            Register Now
+        </button>
 
-        <button class="onclick="location.href='Register Now.html'">Register Now</button>
-        <button class="explore">Explore Event</button>
+        <button class="explore"
+            onclick="document.getElementById('eventInfo').style.display='block'">
+            Explore Event
+        </button>
+
+        <p id="eventInfo" style="display: none;">
+            Get ready for music, fun, talent, and unforgettable memories!
+        </p>
+
     </div>
 
 </body>
 </html>
+```
