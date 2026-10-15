@@ -5,367 +5,340 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GOLDEN NIGHT 2026 | College Fest</title>
+<title>Fest 2026 | Welcome</title>
 
 <style>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
     scroll-behavior: smooth;
 }
 
-:root {
-    --gold: #d4af37;
-    --light-gold: #ffe7a0;
-    --black: #080808;
-    --card: #14120d;
-    --text: #f5f0e5;
-}
-
 body {
-    font-family: Arial, sans-serif;
-    background: var(--black);
-    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    background: #050505;
+    color: #fff8e7;
 }
 
-/* NAVIGATION */
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 22px 8%;
-    background: rgba(0, 0, 0, 0.96);
-    border-bottom: 1px solid #4c3b13;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--gold);
-    letter-spacing: 2px;
-    text-shadow: 0 0 15px #d4af3766;
-}
-
-nav a {
-    text-decoration: none;
-    color: #eee;
-    margin-left: 22px;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    color: var(--gold);
-}
-
-/* HERO SECTION */
+/* WELCOME BACKGROUND */
 
 .hero {
-    min-height: 620px;
+    min-height: 100vh;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 70px 20px;
+    padding: 30px 20px;
+    overflow: hidden;
 
     background:
         radial-gradient(
-            ellipse at 50% 40%,
-            #5d431a55 0%,
+            ellipse at 50% 50%,
+            rgba(190, 133, 30, 0.23),
             transparent 55%
         ),
         linear-gradient(
-            180deg,
-            #08080899,
-            #080808 100%
+            90deg,
+            rgba(0, 0, 0, 0.82),
+            rgba(8, 6, 2, 0.43),
+            rgba(0, 0, 0, 0.82)
         ),
-        url("https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1800&q=85");
+        url("https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=2000&q=90");
 
     background-size: cover;
     background-position: center;
 }
 
-.hero-content {
-    max-width: 850px;
+/* GOLDEN LIGHT EFFECTS */
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at 10% 10%,
+            rgba(255, 190, 60, 0.18),
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse at 90% 20%,
+            rgba(255, 205, 90, 0.15),
+            transparent 30%
+        );
+
+    animation: glow 5s ease-in-out infinite alternate;
 }
 
-.tag {
-    display: inline-block;
-    color: var(--light-gold);
-    border: 1px solid var(--gold);
-    padding: 11px 24px;
-    border-radius: 30px;
-    letter-spacing: 3px;
-    font-size: 12px;
-    margin-bottom: 30px;
+@keyframes glow {
+    from {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-.hero h1 {
-    font-size: clamp(48px, 9vw, 100px);
-    line-height: 1.1;
-    letter-spacing: 5px;
-    color: white;
+/* NAVIGATION */
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 28px 8%;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    background: rgba(0, 0, 0, 0.25);
 }
 
-.hero h1 span {
-    color: var(--gold);
-    text-shadow:
-        0 0 10px #d4af3780,
-        0 0 35px #d4af3744;
-}
-
-.hero p {
-    color: #d4d0c6;
-    margin: 25px auto;
-    line-height: 1.8;
-    font-size: 17px;
-}
-
-/* BUTTONS */
-
-.btn {
-    display: inline-block;
-    padding: 15px 30px;
-    background: linear-gradient(
-        135deg,
-        #f9e5a0,
-        #d4af37,
-        #a77b19
-    );
-    color: #080808;
-    text-decoration: none;
-    border: 1px solid var(--gold);
-    border-radius: 4px;
+.logo {
+    color: #e6c56c;
+    font-size: 21px;
     font-weight: bold;
-    cursor: pointer;
-    margin: 8px;
+    letter-spacing: 3px;
+}
+
+nav a {
+    color: #f8f1df;
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
     transition: 0.3s;
 }
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 25px #d4af3755;
+nav a:hover {
+    color: #ffd76a;
 }
 
-.btn-outline {
-    background: transparent;
-    color: var(--light-gold);
+/* WELCOME CONTENT */
+
+.welcome {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 950px;
+    padding: 90px 15px 30px;
+    animation: appear 1.5s ease;
 }
 
-/* COMMON SECTIONS */
-
-section.content {
-    padding: 85px 8%;
-    text-align: center;
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.section-title {
-    font-size: 36px;
-    color: var(--gold);
-    margin-bottom: 18px;
-    letter-spacing: 2px;
-}
-
-.section-subtitle {
-    color: #aaa397;
-    line-height: 1.8;
-    margin-bottom: 38px;
-}
-
-/* GOLDEN DIVIDER */
-
-.gold-line {
-    width: 75px;
-    height: 3px;
-    background: var(--gold);
-    margin: 20px auto 30px;
-    box-shadow: 0 0 12px #d4af3777;
-}
-
-/* COUNTDOWN */
-
-.countdown {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 18px;
-    margin: 35px 0;
-}
-
-.time-box {
-    background: linear-gradient(145deg, #19160e, #0c0b08);
-    border: 1px solid #66501f;
-    padding: 25px 15px;
-    width: 125px;
-    border-radius: 8px;
-    box-shadow: 0 0 18px #d4af3710;
-}
-
-.time-box h2 {
-    color: var(--light-gold);
-    font-size: 36px;
-}
-
-.time-box p {
-    color: #b6a77e;
-    margin-top: 10px;
+.eyebrow {
+    color: #f0d48a;
+    font-family: Arial, sans-serif;
     font-size: 12px;
-    letter-spacing: 2px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
 }
 
-/* ABOUT SECTION */
-
-.about {
-    background: #100e09;
-    border-top: 1px solid #302515;
-    border-bottom: 1px solid #302515;
+.welcome h1 {
+    font-size: clamp(65px, 11vw, 130px);
+    font-weight: normal;
+    line-height: 0.95;
+    letter-spacing: 5px;
+    color: #fffdf6;
+    text-shadow: 0 5px 35px rgba(0, 0, 0, 0.8);
 }
 
-.about-text {
-    max-width: 750px;
-    margin: auto;
+.welcome h1 span {
+    display: block;
+    margin-top: 20px;
+
+    color: #e8c66d;
+    font-size: 0.7em;
+    letter-spacing: 15px;
+
+    text-shadow:
+        0 0 10px rgba(229, 184, 75, 0.7),
+        0 0 40px rgba(229, 184, 75, 0.3);
 }
 
-/* EVENT CARDS */
+.line {
+    width: 100px;
+    height: 1px;
+    background: #e8c66d;
+    margin: 35px auto;
+    box-shadow: 0 0 15px #e8c66d;
+}
+
+.welcome p {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    line-height: 2;
+    color: #e2d8c0;
+    letter-spacing: 1px;
+}
+
+/* BUTTON */
+
+.enter-btn {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 17px 35px;
+
+    color: #090806;
+    background: linear-gradient(
+        135deg,
+        #f7e4a2,
+        #d4af37,
+        #b88620
+    );
+
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+
+    border: 1px solid #f2d780;
+    transition: 0.4s;
+}
+
+.enter-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 35px rgba(229, 184, 75, 0.45);
+}
+
+.bottom-text {
+    margin-top: 45px;
+    font-family: Arial, sans-serif;
+    color: #bca66b;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+/* SECOND SECTION */
+
+.events {
+    min-height: 65vh;
+    padding: 100px 8%;
+    text-align: center;
+    background:
+        radial-gradient(
+            circle at top,
+            #241b0c,
+            #080808 65%
+        );
+}
+
+.events h2 {
+    color: #e8c66d;
+    font-size: clamp(32px, 5vw, 55px);
+    font-weight: normal;
+    letter-spacing: 4px;
+}
+
+.events > p {
+    color: #b9b09e;
+    font-family: Arial, sans-serif;
+    margin: 25px auto 45px;
+    line-height: 1.8;
+}
 
 .event-grid {
+    max-width: 1000px;
+    margin: auto;
     display: grid;
     grid-template-columns:
-        repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
-    text-align: left;
+        repeat(auto-fit, minmax(200px, 1fr));
+    gap: 22px;
 }
 
 .event-card {
-    padding: 30px;
-    background: linear-gradient(145deg, #19160f, #0c0c0b);
-    border: 1px solid #40331b;
-    border-radius: 8px;
+    border: 1px solid #4b3919;
+    background: rgba(255, 255, 255, 0.025);
+    padding: 35px 20px;
     transition: 0.3s;
 }
 
 .event-card:hover {
-    transform: translateY(-7px);
-    border-color: var(--gold);
-    box-shadow: 0 8px 30px #d4af3718;
+    border-color: #e8c66d;
+    background: #171208;
+    transform: translateY(-5px);
 }
 
-.event-icon {
-    font-size: 42px;
+.event-card .icon {
+    font-size: 35px;
     margin-bottom: 20px;
-    filter: drop-shadow(0 0 8px #d4af3744);
 }
 
 .event-card h3 {
-    color: var(--light-gold);
-    margin-bottom: 15px;
+    color: #e8c66d;
+    margin-bottom: 12px;
 }
 
 .event-card p {
-    color: #aaa397;
+    font-family: Arial, sans-serif;
+    color: #b9b09e;
+    font-size: 13px;
     line-height: 1.8;
-    font-size: 14px;
 }
-
-/* REGISTRATION FORM */
-
-.registration {
-    max-width: 600px;
-    margin: auto;
-    padding: 35px;
-    background: #12100b;
-    border: 1px solid #4b3a19;
-    border-radius: 10px;
-    text-align: left;
-}
-
-.registration label {
-    display: block;
-    margin: 18px 0 9px;
-    color: var(--light-gold);
-}
-
-.registration input,
-.registration select {
-    width: 100%;
-    padding: 14px;
-    background: #080808;
-    color: white;
-    border: 1px solid #51401e;
-    border-radius: 5px;
-    font-size: 15px;
-}
-
-.registration input:focus,
-.registration select:focus {
-    outline: 1px solid var(--gold);
-}
-
-.registration .btn {
-    width: 100%;
-    margin: 25px 0 0;
-}
-
-#message {
-    text-align: center;
-    margin-top: 18px;
-    color: var(--light-gold);
-    line-height: 1.6;
-}
-
-/* FOOTER */
 
 footer {
-    background: #050505;
-    border-top: 1px solid #443419;
+    padding: 25px;
     text-align: center;
-    padding: 35px 20px;
-    color: #aaa397;
-    line-height: 2;
+    color: #99865a;
+    background: #030303;
+    border-top: 1px solid #302514;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
 }
 
-footer h3 {
-    color: var(--gold);
-    letter-spacing: 3px;
-}
-
-/* MOBILE RESPONSIVE */
+/* MOBILE VIEW */
 
 @media (max-width: 650px) {
     nav {
+        padding: 20px 12px;
         flex-direction: column;
-        gap: 20px;
-        padding: 20px 10px;
+        gap: 18px;
     }
 
     nav a {
-        display: inline-block;
-        margin: 6px;
-        font-size: 13px;
+        margin: 0 7px;
+        font-size: 11px;
     }
 
-    .hero {
-        min-height: 520px;
+    .logo {
+        font-size: 18px;
     }
 
-    .hero h1 {
-        letter-spacing: 2px;
+    .welcome h1 {
+        letter-spacing: 1px;
     }
 
-    section.content {
-        padding: 60px 6%;
+    .welcome h1 span {
+        letter-spacing: 7px;
     }
 
-    .section-title {
-        font-size: 28px;
-    }
-
-    .registration {
-        padding: 22px;
+    .eyebrow {
+        letter-spacing: 3px;
+        line-height: 1.8;
     }
 }
 </style>
@@ -373,273 +346,95 @@ footer h3 {
 
 <body>
 
-<!-- NAVIGATION -->
+<!-- WELCOME PAGE -->
 
-<nav>
-    <div class="logo">GOLDEN NIGHT '26</div>
+<section class="hero" id="home">
 
-    <div>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#events">Events</a>
-        <a href="#register">Register</a>
-    </div>
-</nav>
+    <nav>
+        <div class="logo">✦ FEST 2026</div>
 
-<!-- HERO -->
+        <div>
+            <a href="#home">HOME</a>
+            <a href="#events">EXPERIENCE</a>
+        </div>
+    </nav>
 
-<header class="hero" id="home">
-    <div class="hero-content">
+    <div class="welcome">
 
-        <div class="tag">THE GRAND COLLEGE FESTIVAL</div>
+        <div class="eyebrow">
+            An Extraordinary Celebration Awaits
+        </div>
 
-        <h1>GOLDEN<br><span>NIGHT 2026</span></h1>
+        <h1>
+            YOU ARE
+            <span>INVITED</span>
+        </h1>
 
-        <div class="gold-line"></div>
+        <div class="line"></div>
 
         <p>
-            A Night of Music, Talent & Celebration<br>
-            Create Memories That Shine Forever.
+            A celebration of talent, music, creativity and friendship.<br>
+            One unforgettable night. A thousand golden memories.
         </p>
 
-        <p>✦ Date: Add Your Fest Date | Venue: Your College ✦</p>
+        <a href="#events" class="enter-btn">
+            ENTER THE CELEBRATION &nbsp; ↗
+        </a>
 
-        <a href="#register" class="btn">REGISTER NOW ↗</a>
-        <a href="#events" class="btn btn-outline">EXPLORE EVENTS</a>
+        <div class="bottom-text">
+            LIGHTS • MUSIC • MEMORIES
+        </div>
 
     </div>
-</header>
 
-<!-- COUNTDOWN -->
-
-<section class="content">
-    <h2 class="section-title">THE COUNTDOWN</h2>
-    <div class="gold-line"></div>
-
-    <p class="section-subtitle">
-        The night is approaching. Are you ready?
-    </p>
-
-    <div class="countdown">
-        <div class="time-box">
-            <h2 id="days">00</h2>
-            <p>DAYS</p>
-        </div>
-
-        <div class="time-box">
-            <h2 id="hours">00</h2>
-            <p>HOURS</p>
-        </div>
-
-        <div class="time-box">
-            <h2 id="minutes">00</h2>
-            <p>MINUTES</p>
-        </div>
-
-        <div class="time-box">
-            <h2 id="seconds">00</h2>
-            <p>SECONDS</p>
-        </div>
-    </div>
-
-    <p id="countdownMessage" class="section-subtitle"></p>
 </section>
 
-<!-- ABOUT -->
+<!-- FEST EXPERIENCE -->
 
-<section class="content about" id="about">
-    <h2 class="section-title">ABOUT THE FEST</h2>
-    <div class="gold-line"></div>
+<section class="events" id="events">
 
-    <div class="about-text">
-        <p class="section-subtitle">
-            Welcome to Golden Night 2026, where passion meets
-            performance and every moment becomes a memory.
+    <h2>THE EXPERIENCE</h2>
 
-            Join students from different departments for an
-            unforgettable celebration of music, technology,
-            creativity, culture and friendship.
+    <div class="line"></div>
 
-            Get ready to showcase your talent and experience
-            a night filled with golden moments.
-        </p>
-    </div>
-</section>
-
-<!-- EVENTS -->
-
-<section class="content" id="events">
-    <h2 class="section-title">OUR EVENTS</h2>
-    <div class="gold-line"></div>
-
-    <p class="section-subtitle">
-        Discover your passion. Take the spotlight.
+    <p>
+        Step into a world of excitement.<br>
+        Your golden moment starts here.
     </p>
 
     <div class="event-grid">
 
         <div class="event-card">
-            <div class="event-icon">💻</div>
-            <h3>Technical Events</h3>
-            <p>
-                Coding competitions, hackathons, project
-                presentations and technical challenges.
-            </p>
+            <div class="icon">✦</div>
+            <h3>TECHNICAL</h3>
+            <p>Ideas, innovation and challenges that inspire.</p>
         </div>
 
         <div class="event-card">
-            <div class="event-icon">🎤</div>
-            <h3>Music & Singing</h3>
-            <p>
-                Bring your voice to the stage and enjoy
-                exciting musical performances.
-            </p>
+            <div class="icon">♫</div>
+            <h3>MUSIC</h3>
+            <p>Feel the rhythm and experience the energy.</p>
         </div>
 
         <div class="event-card">
-            <div class="event-icon">💃</div>
-            <h3>Dance & Culture</h3>
-            <p>
-                Celebrate creativity through dance,
-                cultural performances and drama.
-            </p>
+            <div class="icon">✧</div>
+            <h3>CULTURAL</h3>
+            <p>Celebrate creativity, talent and tradition.</p>
         </div>
 
         <div class="event-card">
-            <div class="event-icon">🎮</div>
-            <h3>Gaming Arena</h3>
-            <p>
-                Challenge your friends and compete
-                in thrilling gaming tournaments.
-            </p>
+            <div class="icon">★</div>
+            <h3>CELEBRATION</h3>
+            <p>Make memories that shine long after the night.</p>
         </div>
 
     </div>
+
 </section>
-
-<!-- REGISTRATION -->
-
-<section class="content about" id="register">
-    <h2 class="section-title">JOIN THE FEST</h2>
-    <div class="gold-line"></div>
-
-    <p class="section-subtitle">
-        Register your interest and be part of the celebration.
-    </p>
-
-    <form class="registration" id="registrationForm">
-
-        <label for="name">Full Name</label>
-        <input
-            type="text"
-            id="name"
-            placeholder="Enter your full name"
-            maxlength="80"
-            required
-        >
-
-        <label for="email">Email Address</label>
-        <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            required
-        >
-
-        <label for="department">Department</label>
-        <select id="department" required>
-            <option value="">Select department</option>
-            <option>ECE</option>
-            <option>CSE</option>
-            <option>EEE</option>
-            <option>IT</option>
-            <option>Mechanical</option>
-            <option>Other</option>
-        </select>
-
-        <label for="event">Select Event</label>
-        <select id="event" required>
-            <option value="">Choose your event</option>
-            <option>Technical Events</option>
-            <option>Music & Singing</option>
-            <option>Dance & Culture</option>
-            <option>Gaming Arena</option>
-        </select>
-
-        <button type="submit" class="btn">
-            SUBMIT REGISTRATION
-        </button>
-
-        <p id="message" role="status" aria-live="polite"></p>
-
-    </form>
-</section>
-
-<!-- FOOTER -->
 
 <footer>
-    <h3>GOLDEN NIGHT 2026</h3>
-    <p>One Night. Endless Memories.</p>
-    <p>© 2026 College Fest | Designed with ✦ by GK</p>
+    ✦ FEST 2026 · A NIGHT TO REMEMBER ✦
 </footer>
-
-<script>
-/* CHANGE THIS TO YOUR ACTUAL FEST DATE */
-const festDate = new Date("2026-12-15T18:00:00").getTime();
-
-function updateCountdown() {
-    const now = Date.now();
-    const difference = festDate - now;
-
-    if (Number.isNaN(festDate)) {
-        document.getElementById("countdownMessage").textContent =
-            "Please set a valid fest date.";
-        return;
-    }
-
-    if (difference <= 0) {
-        ["days", "hours", "minutes", "seconds"].forEach(id => {
-            document.getElementById(id).textContent = "00";
-        });
-
-        document.getElementById("countdownMessage").textContent =
-            "The countdown has ended!";
-        return;
-    }
-
-    document.getElementById("days").textContent =
-        Math.floor(difference / 86400000);
-
-    document.getElementById("hours").textContent =
-        Math.floor((difference / 3600000) % 24);
-
-    document.getElementById("minutes").textContent =
-        Math.floor((difference / 60000) % 60);
-
-    document.getElementById("seconds").textContent =
-        Math.floor((difference / 1000) % 60);
-
-    document.getElementById("countdownMessage").textContent =
-        "Every second brings us closer to the celebration!";
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-/* DEMO REGISTRATION FORM */
-document.getElementById("registrationForm")
-.addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-
-    document.getElementById("message").textContent =
-        "Thank you, " + name +
-        "! Your demo registration is complete.";
-
-    this.reset();
-});
-</script>
 
 </body>
 </html>
