@@ -1,76 +1,40 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Welcome to Our Event</title>
-
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            color: white;
-
-            background:
-                linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
-                url("https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1600&q=80")
-                center/cover no-repeat;
-        }
-
-        .box {
-            padding: 40px;
-            background: rgba(0,0,0,0.6);
-            border: 1px solid gold;
-            border-radius: 15px;
-        }
-
-        h1 {
-            color: gold;
-        }
-
-        button {
-            padding: 12px 20px;
-            margin: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background: gold;
-            color: black;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background: white;
-        }
-    </style>
+<title>GK</title>
+<style>
+body {
+  font-family: Arial;
+  background: url("https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1200")
+  center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 30px;
+}
+.box {
+  display: inline-block;
+  background: rgba(0,0,0,0.8);
+  padding: 20px;
+  margin: 15px;
+  width: 250px;
+  border-radius: 10px;
+}
+</style>
 </head>
-
 <body>
 
-    <div class="box">
-        <h1 id="welcome">Welcome to Our Event!</h1>
+<h1>Welcome to My Webpage</h1>
 
-        <p>Join us for an amazing experience and unforgettable moments!</p>
+<div class="box">
+  <h2>Study Tips</h2>
+  <p>Study daily and revise important questions.</p>
+</div>
 
-        <button onclick="welcomeMessage()">Welcome</button>
-
-        <button onclick="window.location.href='register.html'">
-            Register Now
-        </button>
-    </div>
-
-    <script>
-        function welcomeMessage() {
-            alert("Welcome to Our Event 2026! 🎉 We are happy to have you!");
-        }
-    </script>
+<div class="box">
+  <h2>My Goals</h2>
+  <p>Stay focused, work hard, and achieve success.</p>
+</div>
 
 </body>
 </html>
